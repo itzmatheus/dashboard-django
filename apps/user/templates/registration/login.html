@@ -1,41 +1,47 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}
 Login
 {% endblock %}
 
+{% block css %}
+<link href="{% static 'css/accounts/login.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 
-  {% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p>
-  {% endif %}
-  
-  {% if next %}
-    {% if user.is_authenticated %}
-      <p>Your account doesn't have access to this page. To proceed,
-      please login with an account that has access.</p>
-    {% else %}
-      <p>Please login to see this page.</p>
-    {% endif %}
-  {% endif %}
-  
-  <form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    <table>
-      <tr>
-        <td>{{ form.username.label_tag }}</td>
-        <td>{{ form.username }}</td>
-      </tr>
-      <tr>
-        <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
-      </tr>
-    </table>
-    <input type="submit" value="login" />
-    <input type="hidden" name="next" value="{{ next }}" />
-  </form>
-  
-  {# Assumes you setup the password_reset view in your URLconf #}
-  <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div>
+      <svg class="bi bi-person-circle" width="150px" height="150px" viewBox="0 0 16 16" fill="#56baed" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+        <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+      </svg>
+    </div>
+
+    <!-- Login Form -->
+    <form method="post" action="{% url 'login' %}">{% csrf_token %}
+      <label for="{{ form.username.id_for_label }}"></label>
+      <input type="text" id="id_username" name="username" placeholder="Usuário">
+      <label for="{{ form.password.id_for_label }}"></label>
+      <input type="text" id="id_password" name="password" placeholder="Senha">
+      <input type="submit" value="login">
+      <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Recuperação de Senha</a>
+    </div>
+
+  </div>
+</div>
   
 {% endblock %}
