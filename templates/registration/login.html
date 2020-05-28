@@ -7,16 +7,13 @@ Login
 {% endblock %}
 
 {% block css %}
-<link href="{% static 'css/accounts/login.css' %}" rel="stylesheet">
+<link href="{% static 'css/accounts/styles.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
 
-<!------ Include the above in your HEAD tag ---------->
-
 <div class="wrapper">
   <div id="formContent">
-    <!-- Tabs Titles -->
 
     <!-- Icon -->
     <div>
@@ -24,6 +21,9 @@ Login
         <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
         <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
       </svg>
+      {% if form.errors %}
+      <p>Por favor, entre com um usuário e senha corretos.</p>
+    {% endif %}
     </div>
 
     <!-- Login Form -->
@@ -32,13 +32,13 @@ Login
       <input type="text" id="id_username" name="username" placeholder="Usuário">
       <label for="{{ form.password.id_for_label }}"></label>
       <input type="password" id="id_password" name="password" placeholder="Senha">
-      <input type="submit" value="login">
+      <button type="submit" id="btn-login">Entrar</button>
       <input type="hidden" name="next" value="{{ next }}" />
     </form>
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
-      <a class="underlineHover" href="#">Recuperação de Senha</a>
+      <a class="underlineHover" href="{% url 'password_reset' %}">Recuperação de Senha</a>
     </div>
 
   </div>
