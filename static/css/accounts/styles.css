@@ -166,3 +166,9 @@ h1{
   padding: 15px 34px;
   text-align: justify;
 }
+
+.span-error-form {
+  padding: 0 34px;
+  text-align: left;
+  color: red;
+}
