@@ -1,0 +1,54 @@
+{% load static %}
+
+{% block js %}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+    });
+</script>
+{% endblock %}
+
+<!-- Sidebar  -->
+  <nav id="sidebar">
+    <div class="sidebar-header">
+        <h3>{{user.username}}</h3>
+        <strong>FD</strong>
+    </div>
+
+    <ul class="list-unstyled components">
+        <li>
+            <a href="{% url 'home' %}">
+                <i class="fas fa-home"></i>
+                Home
+            </a>
+            <a href="#relatoriosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fas fa-chart-line"></i>
+                Relatórios
+            </a>
+            <ul class="collapse list-unstyled" id="relatoriosSubmenu">
+                <li>
+                    <a href="#">Consultas</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#filesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fas fa-copy"></i>
+                Arquivos
+            </a>
+            <ul class="collapse list-unstyled" id="filesSubmenu">
+                <li>
+                    <a href="#">Importar</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <ul class="list-unstyled CTAs">
+        <li>
+            <a href="https://github.com/itzmatheus/dashboard-django" class="download">Versão 0.1</a>
+        </li>
+    </ul>
+</nav>
