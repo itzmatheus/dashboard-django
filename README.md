@@ -34,4 +34,6 @@ EX:
 
 `python manage.py migrate` aplicar migrations no banco de dados
 
+`python manage.py createsuperuser` para criar um usuario e realizar login na aplicação
+
 `python manage.py runserver` rodar servidor local na url: https://localhost:8000
