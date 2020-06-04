@@ -25,7 +25,7 @@ SECRET_KEY = '48pa^g_1#e$1&=##bqw)wsg&#15cw9d7u#udoxxu5)_98-$=_!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -82,11 +82,11 @@ WSGI_APPLICATION = 'main.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
+        'NAME': 'farma',
+        'USER': 'postgres',
+        'PASSWORD': 'docker',
+        'HOST': '127.0.0.1',
+        'PORT': '5433',
     }
 }
 

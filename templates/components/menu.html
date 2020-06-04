@@ -19,7 +19,7 @@
 
     <ul class="list-unstyled components">
         <li>
-            <a href="{% url 'home' %}">
+            <a href="{% url 'home-index' %}">
                 <i class="fas fa-home"></i>
                 Home
             </a>
@@ -29,7 +29,7 @@
             </a>
             <ul class="collapse list-unstyled" id="relatoriosSubmenu">
                 <li>
-                    <a href="#">Consultas</a>
+                    <a href="{% url 'report-index' %}">Gasto por Consultas</a>
                 </li>
             </ul>
         </li>
@@ -39,9 +39,24 @@
                 Arquivos
             </a>
             <ul class="collapse list-unstyled" id="filesSubmenu">
-                <li>
-                    <a href="#">Importar</a>
-                </li>
+                <a href="#filesSubmenuConsultas" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-notes-medical"></i>
+                    Consultas
+                </a>
+                <ul class="collapse list-unstyled" id="filesSubmenuConsultas">
+                    <li>
+                        <a href="{% url 'files-consult-import' %}">Importar</a>
+                    </li>
+                </ul>
+                <a href="#filesSubmenuExames" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-stethoscope"></i>
+                    Exames
+                </a>
+                <ul class="collapse list-unstyled" id="filesSubmenuExames">
+                    <li>
+                        <a href="{% url 'files-exam-import' %}">Importar</a>
+                    </li>
+                </ul>
             </ul>
         </li>
     </ul>

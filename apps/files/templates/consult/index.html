@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Arquivo Consulta
+{% endblock %}
+
+{% block content %}
+
+<div class="card">
+  <div class="card-body">
+
+    {{erro}}
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="custom-file">
+        <input type="file" name="file" required id="id_file" class="custom-file-input" id="{{form.file.id_for_label}}" lang=" ">
+        <label class="custom-file-label" for="{{form.file.id_for_label}}">Selecionar Arquivo</label>
+      </div>
+      <br>
+      <br>
+      <button class="btn btn-primary" type="submit">Enviar</button>
+    </form>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+  // Add the following code if you want the name of the file appear on select
+  $(".custom-file-input").on("change", function() {
+    var fileName = $(this).val().split("\\").pop();
+    $(this).siblings(".custom-file-label").addClass("selected").html(fileName !== '' ? fileName : 'Selecionar Arquivo');
+  });
+  </script>
+{% endblock %}
